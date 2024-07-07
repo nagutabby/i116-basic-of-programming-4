@@ -1,17 +1,19 @@
-class List(object):
-    def cons(self, e):
-        return None
-    def append(self, l):
-        return None
+from __future__ import annotations
+
+class List():
+    def cons(self, e: int) -> None | NnList:
+        pass
+    def append(self, l: NnList) -> None | NnList:
+        pass
     def len(self) -> None | int:
-        return None
+        pass
     def __str__(self) -> str:
-        return ''
+        return ""
 
 class Nil(List):
-    def cons(self, e):
+    def cons(self, e: int) -> NnList:
         return NnList(e, self)
-    def append(self, l) -> list:
+    def append(self, l: NnList) -> NnList:
         return l
     def len(self) -> int:
         return 0
@@ -19,16 +21,14 @@ class Nil(List):
         return 'nil'
 
 class NnList(List):
-    head: int | str | float | None = None
-    tail = Nil()
-    def __init__(self, h: int | str | float | None, t):
-        self.head = h
-        self.tail = t
-    def cons(self, e):
+    def __init__(self, head: int, tail: NnList | Nil) -> None:
+        self.head = head
+        self.tail = tail
+    def cons(self, e: int) -> NnList:
         return NnList(e, self)
-    def append(self, l):
+    def append(self, l: NnList) -> NnList:
         return NnList(self.head, self.tail.append(l))
     def len(self) -> int:
         return 1 + self.tail.len()
     def __str__(self) -> str:
-        return str(self.head) + ' | ' + str(self.tail)
+        return f'{self.head} | {self.tail}'

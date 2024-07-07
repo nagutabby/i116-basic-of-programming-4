@@ -8,7 +8,7 @@ class List():
     def len(self) -> None | int:
         pass
     def __str__(self) -> str:
-        return ""
+        return ''
 
 class Nil(List):
     def cons(self, e: int) -> NnList:
